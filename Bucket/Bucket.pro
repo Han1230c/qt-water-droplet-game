@@ -10,9 +10,9 @@ SOURCES += \
     gamescene.cpp \
     logindialog.cpp \
     main.cpp \
-    mainwindow.cpp \
     registerdialog.cpp \
-    user.cpp
+    user.cpp \
+    userinfodialog.cpp
 
 HEADERS += \
     bucket.h \
@@ -20,12 +20,12 @@ HEADERS += \
     droplet.h \
     gamescene.h \
     logindialog.h \
-    mainwindow.h \
     registerdialog.h \
-    user.h
+    user.h \
+    userinfodialog.h
 
 FORMS += \
     logindialog.ui \
-    mainwindow.ui \
-    registerdialog.ui
+    registerdialog.ui \
+    userinfodialog.ui
 

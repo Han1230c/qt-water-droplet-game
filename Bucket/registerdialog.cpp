@@ -26,11 +26,8 @@ void RegisterDialog::togglePasswordVisibility()
 
     ui->passwordLineEdit->setEchoMode(newEchoMode);
     ui->passwordConfirmLineEdit->setEchoMode(newEchoMode);
-
-
     ui->togglePasswordVisibilityButton->setText(buttonText);
 }
-
 
 RegisterDialog::~RegisterDialog()
 {
@@ -39,7 +36,7 @@ RegisterDialog::~RegisterDialog()
 
 void RegisterDialog::on_pushButtonUpload_clicked()
 {
-    QString filePath = QFileDialog::getOpenFileName(this, "Open Image", "", "Image Files (*.png *.jpg *.bmp)");
+    QString filePath = QFileDialog::getOpenFileName(this, "Open Image", "", "Image Files (*.png *.jpg *.bmp *.jpeg)");
     if (!filePath.isEmpty()) {
         m_filePath = filePath;
         QPixmap pixmap(filePath);
@@ -84,32 +81,46 @@ bool RegisterDialog::validateInput()
 
 bool RegisterDialog::saveUsersData()
 {
-    QList<User> users = User::loadUsersFromFile("users.json");
+
+    QDir currentDir = QDir::current();
+    QString basePath = QCoreApplication::applicationDirPath();
+    basePath = QDir(basePath).absoluteFilePath("../../../../../");
+    QDir dataDir(basePath + "/Data");
+
+
+
+    if (!dataDir.exists()) {
+        bool dirCreated = currentDir.mkdir("Data");
+        qDebug() << "Data directory created:" << dirCreated;
+        if (!dirCreated) {
+            QMessageBox::critical(this, "Registration Error", "Unable to create data directory.");
+            return false;
+        }
+    }
+
+    QString filePath = dataDir.filePath("users.json");
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadWrite)) {
+        return false;
+    }
+    qDebug() << "Users file path:" << filePath;
+
+    QList<User> users = User::loadUsersFromFile(filePath);
+    qDebug() << "Loaded users count:" << users.count();
+
     for (const User &user : users) {
-        if (user.username() == ui->usernameLineEdit->text()) {
+        if (user.username().compare(ui->usernameLineEdit->text(), Qt::CaseInsensitive) == 0) {
             QMessageBox::warning(this, "Registration", "Username already exists.");
             return false;
         }
     }
 
     User newUser(ui->firstNameLineEdit->text(), ui->lastNameLineEdit->text(), ui->usernameLineEdit->text(),
-                 QCryptographicHash::hash(ui->passwordLineEdit->text().toUtf8(), QCryptographicHash::Sha256).toHex(),
-                 ui->comboBoxGender->currentText(), ui->dateEdit->date(), m_filePath);
+                 ui->passwordLineEdit->text(), ui->comboBoxGender->currentText(), ui->dateEdit->date(), m_filePath);
     users.append(newUser);
 
-    QFile file("users.json");
-    if (!file.open(QIODevice::WriteOnly)) {
-        QMessageBox::critical(this, "Error", "Failed to open file for writing.");
-        return false;
-    }
+    bool saveResult = User::saveUsersToFile(filePath, users);
+    qDebug() << "Data saved successfully:" << saveResult;
 
-    QJsonArray userArray;
-    for (const User& user : users) {
-        userArray.append(user.toJsonObject());
-    }
-
-    QJsonDocument doc(userArray);
-    file.write(doc.toJson());
-    file.close();
-    return true;
+    return saveResult;
 }

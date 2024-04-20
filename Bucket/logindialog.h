@@ -15,11 +15,14 @@ public:
     explicit LoginDialog(QWidget *parent = nullptr);
     ~LoginDialog();
 
+    QString getUsername() const;
+
 signals:
     void registerButtonClicked();
 
 private slots:
     void on_loginButton_clicked();
+    void on_loginAsGuestButton_clicked();
 
 private:
     Ui::LoginDialog *ui;

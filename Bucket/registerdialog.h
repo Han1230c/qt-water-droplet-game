@@ -24,7 +24,6 @@ private slots:
 private:
     Ui::RegisterDialog *ui;
     QString m_filePath;
-
     bool validateInput();
     bool saveUsersData();
 };

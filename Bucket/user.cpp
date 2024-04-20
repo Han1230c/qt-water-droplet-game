@@ -1,7 +1,9 @@
 #include "user.h"
+#include "QtCore/qdir.h"
 #include <QFile>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <QCoreApplication>
 
 User::User(const QString &firstName, const QString &lastName, const QString &username, const QString &password, const QString &gender, const QDate &birthday, const QString &profilePhoto)
     : m_firstName(firstName), m_lastName(lastName), m_username(username), m_password(password), m_gender(gender), m_birthday(birthday), m_profilePhoto(profilePhoto)
@@ -91,9 +93,8 @@ QJsonObject User::toJsonObject() const
     return json;
 }
 
-bool User::isValidUser(const QString &username, const QString &password)
-{
-    QList<User> users = loadUsersFromFile("users.json");
+bool User::isRegistered(const QString &username, const QString &password, const QString &filePath) {
+    QList<User> users = loadUsersFromFile(filePath);
     for (const User &user : users) {
         if (user.username() == username && user.password() == password) {
             return true;
@@ -102,12 +103,26 @@ bool User::isValidUser(const QString &username, const QString &password)
     return false;
 }
 
-void User::saveUsersToFile(const QString &filename, const QList<User> &users)
+User User::findUserByUsername(const QString &username)
 {
-    QFile file(filename);
+    QString basePath = QCoreApplication::applicationDirPath();
+    basePath = QDir(basePath).absoluteFilePath("../../../../../Data");
+    QString filePath = QDir(basePath).filePath("users.json");
+
+    QList<User> users = loadUsersFromFile(filePath);
+    for (const User &user : users) {
+        if (user.username() == username) {
+            return user;
+        }
+    }
+    return User();
+}
+
+bool User::saveUsersToFile(const QString &filePath, const QList<User> &users) {
+    QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly)) {
-        qWarning("Couldn't open file.");
-        return;
+        qWarning() << "Couldn't open file for writing:" << file.errorString();
+        return false;
     }
 
     QJsonArray userArray;
@@ -116,15 +131,17 @@ void User::saveUsersToFile(const QString &filename, const QList<User> &users)
     }
 
     QJsonDocument doc(userArray);
-    file.write(doc.toJson());
+    qint64 bytesWritten = file.write(doc.toJson());
     file.close();
+
+    qDebug() << "Bytes written to file:" << bytesWritten;
+    return bytesWritten != -1;
 }
 
-QList<User> User::loadUsersFromFile(const QString &filename)
-{
-    QFile file(filename);
+QList<User> User::loadUsersFromFile(const QString &filePath) {
+    QFile file(filePath);
     if (!file.open(QIODevice::ReadOnly)) {
-        qWarning("Couldn't open file.");
+        qWarning() << "Couldn't open file for reading:" << file.errorString();
         return {};
     }
 
@@ -146,5 +163,6 @@ QList<User> User::loadUsersFromFile(const QString &filename)
         users.append(user);
     }
 
+    file.close();
     return users;
 }

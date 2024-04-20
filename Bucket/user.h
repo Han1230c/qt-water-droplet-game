@@ -33,9 +33,10 @@ public:
 
     QJsonObject toJsonObject() const;
 
-    static bool isValidUser(const QString &username, const QString &password);
-    static void saveUsersToFile(const QString &filename, const QList<User> &users);
-    static QList<User> loadUsersFromFile(const QString &filename);
+    static bool isRegistered(const QString &username, const QString &password, const QString &filePath);
+    static User findUserByUsername(const QString &username);
+    static bool saveUsersToFile(const QString &filePath, const QList<User> &users);
+    static QList<User> loadUsersFromFile(const QString &filePath);
 
 private:
     QString m_firstName;
