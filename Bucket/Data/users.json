@@ -16,5 +16,50 @@
         "password": "Abc12345",
         "profilePhoto": "/private/var/folders/4y/z4flbxlx6vn6yc0d94h9h93h0000gn/T/com.apple.Photos.NSItemProvider/uuid=D0D41232-EA53-43DB-80D1-34BDAEAB3AE7&library=1&type=1&mode=1&loc=true&cap=true.jpeg/IMG_5955.jpeg",
         "username": "Haha233"
+    },
+    {
+        "birthday": "2000-01-12",
+        "firstName": "tina",
+        "gender": "Female",
+        "lastName": "Last Name",
+        "password": "de;wkmkewdmcIw20",
+        "profilePhoto": "",
+        "username": "fmwl"
+    },
+    {
+        "birthday": "2000-04-20",
+        "firstName": "j",
+        "gender": "Choose",
+        "lastName": "Last Name",
+        "password": "j89Ofjewklfmle",
+        "profilePhoto": "",
+        "username": "j"
+    },
+    {
+        "birthday": "2000-01-01",
+        "firstName": "jack",
+        "gender": "Male",
+        "lastName": "Last Name",
+        "password": "890ijokmnkdkelK",
+        "profilePhoto": "",
+        "username": "jack"
+    },
+    {
+        "birthday": "2000-01-01",
+        "firstName": "fkf",
+        "gender": "Male",
+        "lastName": "Last Name",
+        "password": "dkeqwdvns ,x9O",
+        "profilePhoto": "",
+        "username": "ki"
+    },
+    {
+        "birthday": "2000-01-01",
+        "firstName": "hide",
+        "gender": "Male",
+        "lastName": "Last Name",
+        "password": "fjweK;dv0",
+        "profilePhoto": "",
+        "username": "ran"
     }
 ]

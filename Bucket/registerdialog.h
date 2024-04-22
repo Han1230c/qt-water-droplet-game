@@ -3,6 +3,15 @@
 
 #include <QDialog>
 #include <QDate>
+#include <QFileDialog>
+#include <QPixmap>
+#include <QMessageBox>
+#include <QFile>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QRegularExpression>
+#include <QCryptographicHash>
+#include "user.h"
 
 namespace Ui {
 class RegisterDialog;

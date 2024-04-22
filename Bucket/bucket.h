@@ -14,6 +14,7 @@ public:
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;
+
 };
 
 #endif // BUCKET_H

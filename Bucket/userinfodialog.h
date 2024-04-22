@@ -2,6 +2,7 @@
 #define USERINFODIALOG_H
 
 #include <QDialog>
+#include <QDir>
 #include "user.h"
 
 namespace Ui {

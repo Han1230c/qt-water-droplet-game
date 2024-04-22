@@ -4,5 +4,7 @@
         <file>images/Subject 2.png</file>
         <file>images/back.JPG</file>
         <file>images/Subject 3.png</file>
+        <file>sound/test.wav</file>
+        <file>sound/fail.wav</file>
     </qresource>
 </RCC>

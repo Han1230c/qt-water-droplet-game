@@ -1,9 +1,16 @@
+#include "QtWidgets/qpushbutton.h"
 #include "logindialog.h"
 #include "registerdialog.h"
 #include "gamescene.h"
 #include "userinfodialog.h"
 #include <QApplication>
 #include <QGraphicsView>
+#include "level.h"
+#include "winwin.h"
+#include "losewin.h"
+
+void passLevel();
+
 
 int main(int argc, char *argv[])
 {
@@ -25,15 +32,28 @@ int main(int argc, char *argv[])
         }
 
 
-        GameScene *scene = new GameScene();
+        Level* levelPage = new Level();
+        levelPage->setModal(true);
+        levelPage->exec();
+
+        // when player select the level they wants
+        GameScene *scene = new GameScene(levelPage->leveloption);
+
+        QTextStream(stdout) << "speedlevel"<<scene->getLevelIndex() << Qt::endl;
+
         QGraphicsView *view = new QGraphicsView(scene);
         view->setFixedSize(910, 512);
         view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         view->show();
 
+
         return a.exec();
     }
 
     return 0;
 }
+
+
+
+

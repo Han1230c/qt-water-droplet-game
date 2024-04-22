@@ -90,6 +90,7 @@ QJsonObject User::toJsonObject() const
     json["gender"] = m_gender;
     json["birthday"] = m_birthday.toString(Qt::ISODate);
     json["profilePhoto"] = m_profilePhoto;
+    // json["history"] = m_history;
     return json;
 }
 
@@ -160,6 +161,7 @@ QList<User> User::loadUsersFromFile(const QString &filePath) {
         user.setGender(userObject["gender"].toString());
         user.setBirthday(QDate::fromString(userObject["birthday"].toString(), Qt::ISODate));
         user.setProfilePhoto(userObject["profilePhoto"].toString());
+
         users.append(user);
     }
 

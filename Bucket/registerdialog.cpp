@@ -1,14 +1,6 @@
 #include "registerdialog.h"
 #include "ui_registerdialog.h"
-#include <QFileDialog>
-#include <QPixmap>
-#include <QMessageBox>
-#include <QFile>
-#include <QJsonArray>
-#include <QJsonDocument>
-#include <QRegularExpression>
-#include <QCryptographicHash>
-#include "user.h"
+
 
 RegisterDialog::RegisterDialog(QWidget *parent) :
     QDialog(parent),

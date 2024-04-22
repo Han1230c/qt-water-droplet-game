@@ -31,6 +31,11 @@ public:
     QString profilePhoto() const;
     void setProfilePhoto(const QString &profilePhoto);
 
+    QString history() const;
+    void setHistory(const int &score);
+
+
+
     QJsonObject toJsonObject() const;
 
     static bool isRegistered(const QString &username, const QString &password, const QString &filePath);
@@ -46,6 +51,7 @@ private:
     QString m_gender;
     QDate m_birthday;
     QString m_profilePhoto;
+    QList<int> m_history;
 };
 
 #endif // USER_H
