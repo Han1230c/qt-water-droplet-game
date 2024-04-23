@@ -53,12 +53,17 @@ void Droplet::move()
             emit loseSignal(miss->getMiss());
             connect(this, &Droplet::loseSignal, this, [this](int score){
 
-                QString filePath = QCoreApplication::applicationDirPath() + "/Data/users.json";
+                QString basePath = QCoreApplication::applicationDirPath();
+                basePath = QDir(basePath).absoluteFilePath("../../../../../");
+                QDir dataDir(basePath + "/Data");
+
+
+                QString filePath = dataDir.absoluteFilePath("users.json");
                 QList<User> users = user->loadUsersFromFile(filePath);
 
                 for (const User &u : users) {
                     if (u.username().compare(user->username(), Qt::CaseInsensitive) == 0) {
-                        user->updateScore(score);
+                        user->updateScoreHistory(score);
                         // QMessageBox::warning(this, "Registration", "Username already exists.");
                         return false;
                     }
@@ -96,7 +101,7 @@ void Droplet::move()
     QList<QGraphicsItem *> colliding_items = scene()->collidingItems(this);
 
 
-    if (x()> 0 && x() < 980 && !colliding_items.isEmpty() && collidesWithItem(bucket)) {
+    if (x() > 0 && x() < 980 && !colliding_items.isEmpty() && collidesWithItem(bucket)) {
         QTextStream(stdout) << "collide a droplet" << Qt::endl;
         scene()->removeItem(this);
         collectMusic->play();
@@ -105,27 +110,33 @@ void Droplet::move()
         QTextStream(stdout) << "increase score" << Qt::endl;
 
         //win game logic
-        if(score->getScore()==150){
+        if (score->getScore() == 150) {
             emit winSignal(score->getScore());
             connect(this, &Droplet::winSignal, this, [this](int score){
-                user->updateScore(score); // update score
-                QFile file("users.json");
+                user->updateScoreHistory(score);
+
+                QString basePath = QCoreApplication::applicationDirPath();
+                basePath = QDir(basePath).absoluteFilePath("../../../../../");
+                QDir dataDir(basePath + "/Data");
+
+
+                // Define the file path
+                QString filePath = dataDir.absoluteFilePath("users.json");
+                QFile file(filePath);
+
+                // Open the file and write the JSON document
                 if (file.open(QIODevice::WriteOnly)) {
                     QJsonDocument doc(user->toJsonObject());
                     file.write(doc.toJson());
                     file.close();
                 }
             });
-
-
-
         }
 
         deleteLater();
         return;
     }
 }
-
 
 
 

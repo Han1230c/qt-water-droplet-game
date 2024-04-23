@@ -4,6 +4,7 @@
 #include <QString>
 #include <QDate>
 #include <QJsonObject>
+#include <QList>
 
 class User
 {
@@ -31,11 +32,8 @@ public:
     QString profilePhoto() const;
     void setProfilePhoto(const QString &profilePhoto);
 
-    QString history() const;
-    void setHistory(const int &score);
-    void updateScore(int score);
-
-
+    QList<int> scoreHistory() const;
+    void updateScoreHistory(int score);
 
     QJsonObject toJsonObject() const;
 
@@ -52,7 +50,7 @@ private:
     QString m_gender;
     QDate m_birthday;
     QString m_profilePhoto;
-    QList<int> m_history;
+    QList<int> m_scoreHistory;
 };
 
 #endif // USER_H

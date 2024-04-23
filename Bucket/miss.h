@@ -11,6 +11,10 @@ public:
     Miss(QGraphicsItem * parent=nullptr);
     void miss();
     int getMiss();
+
+signals:
+    void gameOver();
+
 private:
     int missCounter;
 };

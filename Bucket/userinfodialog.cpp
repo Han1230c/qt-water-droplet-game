@@ -1,21 +1,18 @@
 #include "userinfodialog.h"
 #include "ui_userinfodialog.h"
 #include <QDate>
+#include "scorehistorydialog.h"
 
 UserInfoDialog::UserInfoDialog(const User &user, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::UserInfoDialog)
+    ui(new Ui::UserInfoDialog),
+    currentUser(user)
 {
     ui->setupUi(this);
-
     ui->lineEditName->setText(user.username());
     ui->lineEditBirthday->setText(user.birthday().toString("yyyy-MM-dd"));
     ui->labelAvatar->setPixmap(QPixmap(user.profilePhoto()));
-
-
     ui->labelCurrentDate->setText(QDate::currentDate().toString("MMMM d, yyyy"));
-
-
     updateBirthdayGreeting(user);
 }
 
@@ -33,4 +30,10 @@ void UserInfoDialog::updateBirthdayGreeting(const User &user)
     } else {
         ui->textEditBirthdayGreeting->setVisible(false);
     }
+}
+
+void UserInfoDialog::on_pushButton_clicked()
+{
+    ScoreHistoryDialog dialog(currentUser, this);
+    dialog.exec();
 }

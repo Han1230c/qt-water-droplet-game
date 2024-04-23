@@ -12,9 +12,12 @@ Miss::Miss(QGraphicsItem *parent)
     setFont(QFont("Courier" ,16));
 }
 
-void Miss::miss(){
-    missCounter ++;
-    setPlainText(QString("Miss:  ")+QString::number(missCounter)); // missCounter increases 1
+void Miss::miss() {
+    missCounter++;
+    setPlainText(QString("Miss:  ")+QString::number(missCounter));
+    if (missCounter >= 5) {
+        emit gameOver();
+    }
 }
 
 int Miss::getMiss(){

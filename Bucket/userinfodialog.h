@@ -2,7 +2,6 @@
 #define USERINFODIALOG_H
 
 #include <QDialog>
-#include <QDir>
 #include "user.h"
 
 namespace Ui {
@@ -17,8 +16,12 @@ public:
     explicit UserInfoDialog(const User &user, QWidget *parent = nullptr);
     ~UserInfoDialog();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::UserInfoDialog *ui;
+    User currentUser;
     void updateBirthdayGreeting(const User &user);
 };
 

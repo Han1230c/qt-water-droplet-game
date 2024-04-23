@@ -12,9 +12,8 @@
 #include "miss.h"
 #include "scoreboard.h"
 #include "bucket.h"
-#include "GameScene.h"
+#include "gamescene.h"
 #include "user.h"
-
 
 
 class Cloud;

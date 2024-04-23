@@ -80,9 +80,14 @@ void User::setProfilePhoto(const QString &profilePhoto)
     m_profilePhoto = profilePhoto;
 }
 
+QList<int> User::scoreHistory() const
+{
+    return m_scoreHistory;
+}
 
-void User::updateScore(int score) {
-    m_history.append(score);
+void User::updateScoreHistory(int score)
+{
+    m_scoreHistory.append(score);
 }
 
 QJsonObject User::toJsonObject() const
@@ -95,16 +100,12 @@ QJsonObject User::toJsonObject() const
     json["gender"] = m_gender;
     json["birthday"] = m_birthday.toString(Qt::ISODate);
     json["profilePhoto"] = m_profilePhoto;
-    // json["history"] = m_history;
-    //Create array
 
-    QJsonArray historyArray;
-    for (int score : m_history) {
-        // add all score to m_history
-        historyArray.append(score);
+    QJsonArray scoreHistoryArray;
+    for (int score : m_scoreHistory) {
+        scoreHistoryArray.append(score);
     }
-
-    json["history"] = historyArray;
+    json["scoreHistory"] = scoreHistoryArray;
 
     return json;
 }
@@ -176,6 +177,13 @@ QList<User> User::loadUsersFromFile(const QString &filePath) {
         user.setGender(userObject["gender"].toString());
         user.setBirthday(QDate::fromString(userObject["birthday"].toString(), Qt::ISODate));
         user.setProfilePhoto(userObject["profilePhoto"].toString());
+
+        QJsonArray scoreHistoryArray = userObject["scoreHistory"].toArray();
+        for (const QJsonValue &scoreValue : scoreHistoryArray) {
+            int score = scoreValue.toInt();
+            user.updateScoreHistory(score);
+        }
+
         users.append(user);
     }
 

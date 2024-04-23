@@ -24,27 +24,21 @@ class GameScene : public QGraphicsScene
 public:
     GameScene(int leveloption, User* currentUser);
     ~GameScene();
-    QList<qreal>* easyLevel = new QList<qreal> {1,2,4,6,8};
-    QList<qreal>* mediumLevel = new QList<qreal> {2,4,6,8,10};
-    QList<qreal>* hardLevel = new QList<qreal> {4,6,8,10,12};
-    // bool gameOver();
-
     int getLevelIndex() const;
-
-private:
-    Cloud *cloud;
-    Bucket *bucketItem;
-    QTimer *dropletTimer;
-    ScoreBoard* scoreBoard;
-    Pocket* pocket;
-    Miss* miss;
-    int levelIndex; // default
-    User* currentUser;
+    void saveUserScore(int score);
 
 private slots:
     void createDroplet();
 
-
+private:
+    QTimer* dropletTimer;
+    Cloud* cloud;
+    Bucket* bucketItem;
+    Pocket* pocket;
+    ScoreBoard* scoreBoard;
+    Miss* miss;
+    int levelIndex;
+    User* currentUser;
 };
 
 #endif // GAMESCENE_H

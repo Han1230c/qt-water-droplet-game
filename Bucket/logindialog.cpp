@@ -37,12 +37,6 @@ void LoginDialog::on_loginButton_clicked()
     QDir dataDir(basePath + "/Data");
 
 
-    if (!dataDir.exists()) {
-        QMessageBox::warning(this, "Login Failed", "Data directory does not exist!");
-        return;
-    }
-
-
     QString filePath = dataDir.filePath("users.json");
 
 

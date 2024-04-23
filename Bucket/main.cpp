@@ -8,6 +8,7 @@
 #include "level.h"
 #include "winwin.h"
 #include "losewin.h"
+#include "scorehistorydialog.h"
 
 void passLevel();
 
@@ -29,6 +30,9 @@ int main(int argc, char *argv[])
             user = User::findUserByUsername(username);
             UserInfoDialog userInfoDialog(user);
             userInfoDialog.exec();
+
+            ScoreHistoryDialog scoreHistoryDialog(user);
+            scoreHistoryDialog.exec();
         }
 
 

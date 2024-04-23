@@ -17,6 +17,7 @@ SOURCES += \
     pocket.cpp \
     registerdialog.cpp \
     scoreboard.cpp \
+    scorehistorydialog.cpp \
     user.cpp \
     userinfodialog.cpp \
     winwin.cpp
@@ -33,6 +34,7 @@ HEADERS += \
     pocket.h \
     registerdialog.h \
     scoreboard.h \
+    scorehistorydialog.h \
     user.h \
     userinfodialog.h \
     winwin.h
@@ -42,6 +44,7 @@ FORMS += \
     logindialog.ui \
     losewin.ui \
     registerdialog.ui \
+    scorehistorydialog.ui \
     userinfodialog.ui \
     winwin.ui
 
