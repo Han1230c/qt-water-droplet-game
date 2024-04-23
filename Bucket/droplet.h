@@ -13,6 +13,7 @@
 #include "scoreboard.h"
 #include "bucket.h"
 #include "GameScene.h"
+#include "user.h"
 
 
 
@@ -23,7 +24,7 @@ class Droplet : public QObject, public QGraphicsPixmapItem
     Q_OBJECT
 
 public:
-    Droplet(Cloud *cloud,Pocket* p,Miss* miss, ScoreBoard* scoreB, Bucket* bucket, QList<qreal>* speedLevel);
+    Droplet(Cloud *cloud,Pocket* p,Miss* miss, ScoreBoard* scoreB, Bucket* bucket, QList<qreal>* speedLevel, User* currentUser);
     ~Droplet();
 
 public slots:
@@ -40,6 +41,7 @@ private:
     ScoreBoard* score;
     Bucket* bucket;
     QList<qreal>* speedLevel;
+    User* user;
 };
 
 #endif // DROPLET_H

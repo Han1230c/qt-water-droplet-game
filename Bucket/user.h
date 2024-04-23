@@ -33,6 +33,7 @@ public:
 
     QString history() const;
     void setHistory(const int &score);
+    void updateScore(int score);
 
 
 

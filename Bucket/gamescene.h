@@ -15,13 +15,14 @@
 #include "miss.h"
 #include "winwin.h"
 #include "losewin.h"
+#include "user.h"
 
 class GameScene : public QGraphicsScene
 {
     Q_OBJECT
 
 public:
-    GameScene(int leveloption);
+    GameScene(int leveloption, User* currentUser);
     ~GameScene();
     QList<qreal>* easyLevel = new QList<qreal> {1,2,4,6,8};
     QList<qreal>* mediumLevel = new QList<qreal> {2,4,6,8,10};
@@ -38,6 +39,7 @@ private:
     Pocket* pocket;
     Miss* miss;
     int levelIndex; // default
+    User* currentUser;
 
 private slots:
     void createDroplet();

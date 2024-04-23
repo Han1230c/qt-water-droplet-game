@@ -2,9 +2,11 @@
 #include "cloud.h"
 #include <QRandomGenerator>
 
-GameScene::GameScene(int leveloption)
+GameScene::GameScene(int leveloption, User* currentUser)
 {
     levelIndex = leveloption;
+
+    this->currentUser = currentUser;
 
     setSceneRect(0, 0, 908, 510);
     setBackgroundBrush(QBrush(QImage(":/images/back.JPG").scaled(908, 510)));
@@ -58,19 +60,19 @@ void GameScene::createDroplet()
 
 
             if(levelIndex==0){
-                Droplet * droplet = new Droplet(cloud, this->pocket, this->miss,this->scoreBoard, this->bucketItem, easyLevel);
+                Droplet * droplet = new Droplet(cloud, this->pocket, this->miss,this->scoreBoard, this->bucketItem, easyLevel, currentUser);
                 addItem(droplet);
                 connect(droplet, &Droplet::winSignal, winWindow, &winWin::createWinWindow);
                 connect(droplet, &Droplet::loseSignal, loseWindow, &loseWin::createLoseWindow);
             }
             else if(levelIndex==1){
-                Droplet * droplet = new Droplet(cloud, this->pocket, this->miss,this->scoreBoard, this->bucketItem, mediumLevel);
+                Droplet * droplet = new Droplet(cloud, this->pocket, this->miss,this->scoreBoard, this->bucketItem, mediumLevel, currentUser);
                 addItem(droplet);
                 connect(droplet, &Droplet::winSignal, winWindow, &winWin::createWinWindow);
                 connect(droplet, &Droplet::loseSignal, loseWindow, &loseWin::createLoseWindow);
             }
             else if(levelIndex==2){
-                Droplet * droplet = new Droplet(cloud, this->pocket, this->miss,this->scoreBoard, this->bucketItem, hardLevel);
+                Droplet * droplet = new Droplet(cloud, this->pocket, this->miss,this->scoreBoard, this->bucketItem, hardLevel, currentUser);
                 addItem(droplet);
                 connect(droplet, &Droplet::winSignal, winWindow, &winWin::createWinWindow);
                 connect(droplet, &Droplet::loseSignal, loseWindow, &loseWin::createLoseWindow);

@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     LoginDialog login;
     RegisterDialog registerDialog;
-
+    User user;
     QObject::connect(&login, &LoginDialog::registerButtonClicked, [&](){
         registerDialog.exec();
     });
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     {
         QString username = login.getUsername();
         if (!username.isEmpty()) {
-            User user = User::findUserByUsername(username);
+            user = User::findUserByUsername(username);
             UserInfoDialog userInfoDialog(user);
             userInfoDialog.exec();
         }
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
         levelPage->exec();
 
         // when player select the level they wants
-        GameScene *scene = new GameScene(levelPage->leveloption);
+        GameScene *scene = new GameScene(levelPage->leveloption,&user);
 
         QTextStream(stdout) << "speedlevel"<<scene->getLevelIndex() << Qt::endl;
 

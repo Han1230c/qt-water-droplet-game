@@ -16,3 +16,4 @@ loseWin::~loseWin()
 void loseWin::createLoseWindow(){
     this->exec();
 }
+
