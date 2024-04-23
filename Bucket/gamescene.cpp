@@ -82,7 +82,7 @@ void GameScene::createDroplet()
                 connect(droplet, &Droplet::loseSignal, this, [this]() { saveUserScore(scoreBoard->getScore()); });
             }
 
-            return;
+
         }
     }
 }

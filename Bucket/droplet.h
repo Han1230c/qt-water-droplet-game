@@ -30,7 +30,7 @@ public slots:
     void move();
 
 signals:
-    void winSignal(int);
+    void winSignal(int point);
     void loseSignal(int);
 
 private:

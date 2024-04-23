@@ -16,9 +16,11 @@ public:
     ~winWin();
 
 public slots:
-    void createWinWindow();
+    void createWinWindow(int point);
+
 // public: signals:
 //     void saveHistScoreSign();
+
 private:
     Ui::winWin *ui;
 };

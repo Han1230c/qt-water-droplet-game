@@ -6,6 +6,14 @@
         "lastName": "Last Name",
         "password": "Abc12345",
         "profilePhoto": "/private/var/folders/4y/z4flbxlx6vn6yc0d94h9h93h0000gn/T/com.apple.Photos.NSItemProvider/uuid=F5364F1F-ADE1-4D78-B5A9-B43B68F74D98&library=1&type=1&mode=1&loc=true&cap=true.jpeg/430719.jpeg",
+        "scoreHistory": [
+            0,
+            5,
+            0,
+            5,
+            5,
+            35
+        ],
         "username": "aaa"
     },
     {
@@ -15,6 +23,8 @@
         "lastName": "Last Name",
         "password": "Abc12345",
         "profilePhoto": "/private/var/folders/4y/z4flbxlx6vn6yc0d94h9h93h0000gn/T/com.apple.Photos.NSItemProvider/uuid=D0D41232-EA53-43DB-80D1-34BDAEAB3AE7&library=1&type=1&mode=1&loc=true&cap=true.jpeg/IMG_5955.jpeg",
+        "scoreHistory": [
+        ],
         "username": "Haha233"
     },
     {
@@ -24,6 +34,8 @@
         "lastName": "Last Name",
         "password": "de;wkmkewdmcIw20",
         "profilePhoto": "",
+        "scoreHistory": [
+        ],
         "username": "fmwl"
     },
     {
@@ -33,6 +45,8 @@
         "lastName": "Last Name",
         "password": "j89Ofjewklfmle",
         "profilePhoto": "",
+        "scoreHistory": [
+        ],
         "username": "j"
     },
     {
@@ -42,6 +56,8 @@
         "lastName": "Last Name",
         "password": "890ijokmnkdkelK",
         "profilePhoto": "",
+        "scoreHistory": [
+        ],
         "username": "jack"
     },
     {
@@ -51,6 +67,8 @@
         "lastName": "Last Name",
         "password": "dkeqwdvns ,x9O",
         "profilePhoto": "",
+        "scoreHistory": [
+        ],
         "username": "ki"
     },
     {
@@ -60,6 +78,8 @@
         "lastName": "Last Name",
         "password": "fjweK;dv0",
         "profilePhoto": "",
+        "scoreHistory": [
+        ],
         "username": "ran"
     }
 ]

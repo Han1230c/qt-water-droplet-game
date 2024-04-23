@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>80</x>
-     <y>80</y>
+     <y>100</y>
      <width>231</width>
      <height>61</height>
     </rect>
@@ -32,28 +32,10 @@
     <string>Game Over</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="leaveBtm">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>180</y>
-     <width>100</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>13</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Play Again</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_2">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
+     <x>140</x>
      <y>180</y>
      <width>100</width>
      <height>32</height>

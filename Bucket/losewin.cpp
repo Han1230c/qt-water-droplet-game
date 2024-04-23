@@ -6,6 +6,7 @@ loseWin::loseWin(QWidget *parent)
     , ui(new Ui::loseWin)
 {
     ui->setupUi(this);
+    connect(ui->leaveBtm, &QPushButton::clicked, this, QApplication::quit);
 }
 
 loseWin::~loseWin()
@@ -15,5 +16,11 @@ loseWin::~loseWin()
 
 void loseWin::createLoseWindow(){
     this->exec();
+}
+
+
+void loseWin::on_leaveBtm_clicked()
+{
+
 }
 

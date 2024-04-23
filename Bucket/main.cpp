@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
         }
 
 
+
         Level* levelPage = new Level();
         levelPage->setModal(true);
         levelPage->exec();
@@ -50,7 +51,6 @@ int main(int argc, char *argv[])
         view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         view->show();
-
 
         return a.exec();
     }

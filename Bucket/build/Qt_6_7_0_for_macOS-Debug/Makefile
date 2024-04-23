@@ -58,37 +58,46 @@ SOURCES       = ../../bucket.cpp \
 		../../gamescene.cpp \
 		../../level.cpp \
 		../../logindialog.cpp \
+		../../losewin.cpp \
 		../../main.cpp \
 		../../miss.cpp \
 		../../pocket.cpp \
 		../../registerdialog.cpp \
 		../../scoreboard.cpp \
+		../../scorehistorydialog.cpp \
 		../../user.cpp \
-		../../userinfodialog.cpp qrc_res.cpp \
+		../../userinfodialog.cpp \
+		../../winwin.cpp qrc_res.cpp \
 		moc_bucket.cpp \
 		moc_cloud.cpp \
 		moc_droplet.cpp \
 		moc_gamescene.cpp \
 		moc_level.cpp \
 		moc_logindialog.cpp \
+		moc_losewin.cpp \
 		moc_miss.cpp \
 		moc_pocket.cpp \
 		moc_registerdialog.cpp \
 		moc_scoreboard.cpp \
-		moc_userinfodialog.cpp
+		moc_scorehistorydialog.cpp \
+		moc_userinfodialog.cpp \
+		moc_winwin.cpp
 OBJECTS       = bucket.o \
 		cloud.o \
 		droplet.o \
 		gamescene.o \
 		level.o \
 		logindialog.o \
+		losewin.o \
 		main.o \
 		miss.o \
 		pocket.o \
 		registerdialog.o \
 		scoreboard.o \
+		scorehistorydialog.o \
 		user.o \
 		userinfodialog.o \
+		winwin.o \
 		qrc_res.o \
 		moc_bucket.o \
 		moc_cloud.o \
@@ -96,11 +105,14 @@ OBJECTS       = bucket.o \
 		moc_gamescene.o \
 		moc_level.o \
 		moc_logindialog.o \
+		moc_losewin.o \
 		moc_miss.o \
 		moc_pocket.o \
 		moc_registerdialog.o \
 		moc_scoreboard.o \
-		moc_userinfodialog.o
+		moc_scorehistorydialog.o \
+		moc_userinfodialog.o \
+		moc_winwin.o
 DIST          = /Users/christina/Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
 		/Users/christina/Qt/6.7.0/macos/mkspecs/features/device_config.prf \
 		/Users/christina/Qt/6.7.0/macos/mkspecs/common/unix.conf \
@@ -337,24 +349,30 @@ DIST          = /Users/christina/Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
 		../../gamescene.h \
 		../../level.h \
 		../../logindialog.h \
+		../../losewin.h \
 		../../miss.h \
 		../../pocket.h \
 		../../registerdialog.h \
 		../../scoreboard.h \
+		../../scorehistorydialog.h \
 		../../user.h \
-		../../userinfodialog.h ../../bucket.cpp \
+		../../userinfodialog.h \
+		../../winwin.h ../../bucket.cpp \
 		../../cloud.cpp \
 		../../droplet.cpp \
 		../../gamescene.cpp \
 		../../level.cpp \
 		../../logindialog.cpp \
+		../../losewin.cpp \
 		../../main.cpp \
 		../../miss.cpp \
 		../../pocket.cpp \
 		../../registerdialog.cpp \
 		../../scoreboard.cpp \
+		../../scorehistorydialog.cpp \
 		../../user.cpp \
-		../../userinfodialog.cpp
+		../../userinfodialog.cpp \
+		../../winwin.cpp
 QMAKE_TARGET  = Bucket
 DESTDIR       = 
 TARGET        = Bucket.app/Contents/MacOS/Bucket
@@ -375,7 +393,7 @@ include /Users/christina/Qt/6.7.0/macos/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-Bucket.app/Contents/MacOS/Bucket: ui_gameOverWin.h ui_leveldialog.h ui_logindialog.h ui_registerdialog.h ui_userinfodialog.h ui_winGameWin.h $(OBJECTS)  
+Bucket.app/Contents/MacOS/Bucket: ui_leveldialog.h ui_logindialog.h ui_losewin.h ui_registerdialog.h ui_scorehistorydialog.h ui_userinfodialog.h ui_winwin.h $(OBJECTS)  
 	@test -d Bucket.app/Contents/MacOS/ || mkdir -p Bucket.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET)  $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -879,9 +897,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../res.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../../bucket.h ../../cloud.h ../../droplet.h ../../gamescene.h ../../level.h ../../logindialog.h ../../miss.h ../../pocket.h ../../registerdialog.h ../../scoreboard.h ../../user.h ../../userinfodialog.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../bucket.cpp ../../cloud.cpp ../../droplet.cpp ../../gamescene.cpp ../../level.cpp ../../logindialog.cpp ../../main.cpp ../../miss.cpp ../../pocket.cpp ../../registerdialog.cpp ../../scoreboard.cpp ../../user.cpp ../../userinfodialog.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../gameOverWin.ui ../../leveldialog.ui ../../logindialog.ui ../../registerdialog.ui ../../userinfodialog.ui ../../winGameWin.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../../bucket.h ../../cloud.h ../../droplet.h ../../gamescene.h ../../level.h ../../logindialog.h ../../losewin.h ../../miss.h ../../pocket.h ../../registerdialog.h ../../scoreboard.h ../../scorehistorydialog.h ../../user.h ../../userinfodialog.h ../../winwin.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../bucket.cpp ../../cloud.cpp ../../droplet.cpp ../../gamescene.cpp ../../level.cpp ../../logindialog.cpp ../../losewin.cpp ../../main.cpp ../../miss.cpp ../../pocket.cpp ../../registerdialog.cpp ../../scoreboard.cpp ../../scorehistorydialog.cpp ../../user.cpp ../../userinfodialog.cpp ../../winwin.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../leveldialog.ui ../../logindialog.ui ../../losewin.ui ../../registerdialog.ui ../../scorehistorydialog.ui ../../userinfodialog.ui ../../winwin.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -918,12 +936,12 @@ qrc_res.cpp: ../../res.qrc \
 		../../images/Subject\ 3.png \
 		../../images/back.JPG \
 		../../sound/fail.wav \
-		../../sound/test.wav
+		../../sound/eating.wav
 	/Users/christina/Qt/6.7.0/macos/libexec/rcc -name res --no-zstd ../../res.qrc -o qrc_res.cpp
 
-compiler_moc_header_make_all: moc_bucket.cpp moc_cloud.cpp moc_droplet.cpp moc_gamescene.cpp moc_level.cpp moc_logindialog.cpp moc_miss.cpp moc_pocket.cpp moc_registerdialog.cpp moc_scoreboard.cpp moc_userinfodialog.cpp
+compiler_moc_header_make_all: moc_bucket.cpp moc_cloud.cpp moc_droplet.cpp moc_gamescene.cpp moc_level.cpp moc_logindialog.cpp moc_losewin.cpp moc_miss.cpp moc_pocket.cpp moc_registerdialog.cpp moc_scoreboard.cpp moc_scorehistorydialog.cpp moc_userinfodialog.cpp moc_winwin.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_bucket.cpp moc_cloud.cpp moc_droplet.cpp moc_gamescene.cpp moc_level.cpp moc_logindialog.cpp moc_miss.cpp moc_pocket.cpp moc_registerdialog.cpp moc_scoreboard.cpp moc_userinfodialog.cpp
+	-$(DEL_FILE) moc_bucket.cpp moc_cloud.cpp moc_droplet.cpp moc_gamescene.cpp moc_level.cpp moc_logindialog.cpp moc_losewin.cpp moc_miss.cpp moc_pocket.cpp moc_registerdialog.cpp moc_scoreboard.cpp moc_scorehistorydialog.cpp moc_userinfodialog.cpp moc_winwin.cpp
 moc_bucket.cpp: ../../bucket.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
@@ -970,6 +988,26 @@ moc_droplet.cpp: ../../droplet.h \
 		../../bucket.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
 		/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
+		../../gamescene.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDir \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../droplet.h \
+		../../user.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDate \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../cloud.h \
+		../../winwin.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../losewin.h \
 		/Users/christina/Qt/6.7.0/macos/libexec/moc
 	/Users/christina/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/christina/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/christina/Desktop/MSD/qt-water-droplet-game/Bucket -I/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/christina/Qt/6.7.0/macos/lib ../../droplet.h -o moc_droplet.cpp
 
@@ -982,6 +1020,10 @@ moc_gamescene.cpp: ../../gamescene.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDir \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		../../bucket.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
@@ -1000,7 +1042,19 @@ moc_gamescene.cpp: ../../gamescene.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfont.h \
 		../../miss.h \
 		../../scoreboard.h \
+		../../gamescene.h \
 		../../cloud.h \
+		../../winwin.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../losewin.h \
+		../../user.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDate \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
 		/Users/christina/Qt/6.7.0/macos/libexec/moc
 	/Users/christina/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/christina/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/christina/Desktop/MSD/qt-water-droplet-game/Bucket -I/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/christina/Qt/6.7.0/macos/lib ../../gamescene.h -o moc_gamescene.cpp
 
@@ -1017,19 +1071,14 @@ moc_level.cpp: ../../level.h \
 moc_logindialog.cpp: ../../logindialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDir \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
-		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
-		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
-		../../user.h \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDate \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
 		/Users/christina/Qt/6.7.0/macos/libexec/moc
 	/Users/christina/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/christina/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/christina/Desktop/MSD/qt-water-droplet-game/Bucket -I/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/christina/Qt/6.7.0/macos/lib ../../logindialog.h -o moc_logindialog.cpp
+
+moc_losewin.cpp: ../../losewin.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		/Users/christina/Qt/6.7.0/macos/libexec/moc
+	/Users/christina/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/christina/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/christina/Desktop/MSD/qt-water-droplet-game/Bucket -I/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/christina/Qt/6.7.0/macos/lib ../../losewin.h -o moc_losewin.cpp
 
 moc_miss.cpp: ../../miss.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
@@ -1073,6 +1122,8 @@ moc_registerdialog.cpp: ../../registerdialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
 		/Users/christina/Qt/6.7.0/macos/libexec/moc
 	/Users/christina/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/christina/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/christina/Desktop/MSD/qt-water-droplet-game/Bucket -I/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/christina/Qt/6.7.0/macos/lib ../../registerdialog.h -o moc_registerdialog.cpp
 
@@ -1085,11 +1136,9 @@ moc_scoreboard.cpp: ../../scoreboard.h \
 		/Users/christina/Qt/6.7.0/macos/libexec/moc
 	/Users/christina/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/christina/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/christina/Desktop/MSD/qt-water-droplet-game/Bucket -I/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/christina/Qt/6.7.0/macos/lib ../../scoreboard.h -o moc_scoreboard.cpp
 
-moc_userinfodialog.cpp: ../../userinfodialog.h \
+moc_scorehistorydialog.cpp: ../../scorehistorydialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDir \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
 		../../user.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
@@ -1097,20 +1146,39 @@ moc_userinfodialog.cpp: ../../userinfodialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
+		/Users/christina/Qt/6.7.0/macos/libexec/moc
+	/Users/christina/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/christina/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/christina/Desktop/MSD/qt-water-droplet-game/Bucket -I/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/christina/Qt/6.7.0/macos/lib ../../scorehistorydialog.h -o moc_scorehistorydialog.cpp
+
+moc_userinfodialog.cpp: ../../userinfodialog.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../user.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDate \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
 		/Users/christina/Qt/6.7.0/macos/libexec/moc
 	/Users/christina/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/christina/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/christina/Desktop/MSD/qt-water-droplet-game/Bucket -I/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/christina/Qt/6.7.0/macos/lib ../../userinfodialog.h -o moc_userinfodialog.cpp
+
+moc_winwin.cpp: ../../winwin.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		/Users/christina/Qt/6.7.0/macos/libexec/moc
+	/Users/christina/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/christina/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/christina/Desktop/MSD/qt-water-droplet-game/Bucket -I/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/christina/Qt/6.7.0/macos/lib ../../winwin.h -o moc_winwin.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_gameOverWin.h ui_leveldialog.h ui_logindialog.h ui_registerdialog.h ui_userinfodialog.h ui_winGameWin.h
+compiler_uic_make_all: ui_leveldialog.h ui_logindialog.h ui_losewin.h ui_registerdialog.h ui_scorehistorydialog.h ui_userinfodialog.h ui_winwin.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_gameOverWin.h ui_leveldialog.h ui_logindialog.h ui_registerdialog.h ui_userinfodialog.h ui_winGameWin.h
-ui_gameOverWin.h: ../../gameOverWin.ui \
-		/Users/christina/Qt/6.7.0/macos/libexec/uic
-	/Users/christina/Qt/6.7.0/macos/libexec/uic ../../gameOverWin.ui -o ui_gameOverWin.h
-
+	-$(DEL_FILE) ui_leveldialog.h ui_logindialog.h ui_losewin.h ui_registerdialog.h ui_scorehistorydialog.h ui_userinfodialog.h ui_winwin.h
 ui_leveldialog.h: ../../leveldialog.ui \
 		/Users/christina/Qt/6.7.0/macos/libexec/uic
 	/Users/christina/Qt/6.7.0/macos/libexec/uic ../../leveldialog.ui -o ui_leveldialog.h
@@ -1119,17 +1187,25 @@ ui_logindialog.h: ../../logindialog.ui \
 		/Users/christina/Qt/6.7.0/macos/libexec/uic
 	/Users/christina/Qt/6.7.0/macos/libexec/uic ../../logindialog.ui -o ui_logindialog.h
 
+ui_losewin.h: ../../losewin.ui \
+		/Users/christina/Qt/6.7.0/macos/libexec/uic
+	/Users/christina/Qt/6.7.0/macos/libexec/uic ../../losewin.ui -o ui_losewin.h
+
 ui_registerdialog.h: ../../registerdialog.ui \
 		/Users/christina/Qt/6.7.0/macos/libexec/uic
 	/Users/christina/Qt/6.7.0/macos/libexec/uic ../../registerdialog.ui -o ui_registerdialog.h
+
+ui_scorehistorydialog.h: ../../scorehistorydialog.ui \
+		/Users/christina/Qt/6.7.0/macos/libexec/uic
+	/Users/christina/Qt/6.7.0/macos/libexec/uic ../../scorehistorydialog.ui -o ui_scorehistorydialog.h
 
 ui_userinfodialog.h: ../../userinfodialog.ui \
 		/Users/christina/Qt/6.7.0/macos/libexec/uic
 	/Users/christina/Qt/6.7.0/macos/libexec/uic ../../userinfodialog.ui -o ui_userinfodialog.h
 
-ui_winGameWin.h: ../../winGameWin.ui \
+ui_winwin.h: ../../winwin.ui \
 		/Users/christina/Qt/6.7.0/macos/libexec/uic
-	/Users/christina/Qt/6.7.0/macos/libexec/uic ../../winGameWin.ui -o ui_winGameWin.h
+	/Users/christina/Qt/6.7.0/macos/libexec/uic ../../winwin.ui -o ui_winwin.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -1189,7 +1265,25 @@ droplet.o: ../../droplet.cpp ../../droplet.h \
 		../../bucket.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
 		/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
+		../../gamescene.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDir \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		../../cloud.h \
+		../../winwin.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../losewin.h \
+		../../user.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDate \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QRandomGenerator \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrandom.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o droplet.o ../../droplet.cpp
@@ -1203,6 +1297,10 @@ gamescene.o: ../../gamescene.cpp ../../gamescene.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDir \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		../../bucket.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
@@ -1221,9 +1319,24 @@ gamescene.o: ../../gamescene.cpp ../../gamescene.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfont.h \
 		../../miss.h \
 		../../scoreboard.h \
+		../../user.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDate \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
 		../../cloud.h \
+		../../winwin.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../losewin.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QRandomGenerator \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrandom.h
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrandom.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gamescene.o ../../gamescene.cpp
 
 level.o: ../../level.cpp ../../level.h \
@@ -1239,8 +1352,7 @@ level.o: ../../level.cpp ../../level.h \
 logindialog.o: ../../logindialog.cpp ../../logindialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDir \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
+		ui_logindialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		../../user.h \
@@ -1250,28 +1362,31 @@ logindialog.o: ../../logindialog.cpp ../../logindialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
-		ui_logindialog.h
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
+		../../userinfodialog.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDir \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o logindialog.o ../../logindialog.cpp
+
+losewin.o: ../../losewin.cpp ../../losewin.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		ui_losewin.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o losewin.o ../../losewin.cpp
 
 main.o: ../../main.cpp ../../logindialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDir \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
-		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
-		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
-		../../user.h \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../registerdialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDate \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
-		../../registerdialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QFileDialog \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		/Users/christina/Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QFile \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfile.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
@@ -1282,6 +1397,13 @@ main.o: ../../main.cpp ../../logindialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qregularexpression.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QCryptographicHash \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcryptographichash.h \
+		../../user.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
 		../../gamescene.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
@@ -1289,8 +1411,8 @@ main.o: ../../main.cpp ../../logindialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDir \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
 		../../bucket.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
@@ -1310,10 +1432,13 @@ main.o: ../../main.cpp ../../logindialog.h \
 		../../miss.h \
 		../../scoreboard.h \
 		../../cloud.h \
+		../../winwin.h \
+		../../losewin.h \
 		../../userinfodialog.h \
-		../../level.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QApplication \
-		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qapplication.h
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qapplication.h \
+		../../level.h \
+		../../scorehistorydialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../main.cpp
 
 miss.o: ../../miss.cpp ../../miss.h \
@@ -1356,6 +1481,8 @@ registerdialog.o: ../../registerdialog.cpp ../../registerdialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
 		ui_registerdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o registerdialog.o ../../registerdialog.cpp
 
@@ -1367,6 +1494,29 @@ scoreboard.o: ../../scoreboard.cpp ../../scoreboard.h \
 		../../pocket.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scoreboard.o ../../scoreboard.cpp
 
+scorehistorydialog.o: ../../scorehistorydialog.cpp ../../scorehistorydialog.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../user.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDate \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
+		ui_scorehistorydialog.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDir \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QFile \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfile.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonarray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scorehistorydialog.o ../../scorehistorydialog.cpp
+
 user.o: ../../user.cpp ../../user.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
@@ -1374,6 +1524,8 @@ user.o: ../../user.cpp ../../user.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QFile \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qfile.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonArray \
@@ -1387,8 +1539,6 @@ user.o: ../../user.cpp ../../user.h \
 userinfodialog.o: ../../userinfodialog.cpp ../../userinfodialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDir \
-		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdir.h \
 		../../user.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
@@ -1396,8 +1546,17 @@ userinfodialog.o: ../../userinfodialog.cpp ../../userinfodialog.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdatetime.h \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QJsonObject \
 		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qjsonobject.h \
-		ui_userinfodialog.h
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
+		/Users/christina/Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
+		ui_userinfodialog.h \
+		../../scorehistorydialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userinfodialog.o ../../userinfodialog.cpp
+
+winwin.o: ../../winwin.cpp ../../winwin.h \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/christina/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		ui_winwin.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o winwin.o ../../winwin.cpp
 
 qrc_res.o: qrc_res.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_res.o qrc_res.cpp
@@ -1420,6 +1579,9 @@ moc_level.o: moc_level.cpp
 moc_logindialog.o: moc_logindialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_logindialog.o moc_logindialog.cpp
 
+moc_losewin.o: moc_losewin.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_losewin.o moc_losewin.cpp
+
 moc_miss.o: moc_miss.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_miss.o moc_miss.cpp
 
@@ -1432,8 +1594,14 @@ moc_registerdialog.o: moc_registerdialog.cpp
 moc_scoreboard.o: moc_scoreboard.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_scoreboard.o moc_scoreboard.cpp
 
+moc_scorehistorydialog.o: moc_scorehistorydialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_scorehistorydialog.o moc_scorehistorydialog.cpp
+
 moc_userinfodialog.o: moc_userinfodialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_userinfodialog.o moc_userinfodialog.cpp
+
+moc_winwin.o: moc_winwin.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_winwin.o moc_winwin.cpp
 
 ####### Install
 

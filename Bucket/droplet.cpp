@@ -36,7 +36,7 @@ void Droplet::move()
     collectMusic->setAudioOutput(new QAudioOutput);
     QMediaPlayer* missMusic = new QMediaPlayer;
     missMusic->setAudioOutput(new QAudioOutput);
-    collectMusic -> setSource(QUrl("qrc:/sound/test.wav"));
+    collectMusic -> setSource(QUrl("qrc:/sound/eating.wav"));
     missMusic -> setSource(QUrl("qrc:/sound/fail.wav"));
 
 
@@ -70,8 +70,8 @@ void Droplet::move()
                 }
 
 
-                bool saveResult = user->saveUsersToFile(filePath, users);
-                if(saveResult) QTextStream(stdout) << "123" << Qt::endl;
+                user->saveUsersToFile(filePath, users);
+
 
                 QFile file(filePath);
                 if (file.open(QIODevice::WriteOnly)) {

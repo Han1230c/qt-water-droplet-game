@@ -6,6 +6,8 @@ winWin::winWin(QWidget *parent)
     , ui(new Ui::winWin)
 {
     ui->setupUi(this);
+
+    connect(ui->leaveBtm, &QPushButton::clicked, this, QApplication::quit);
 }
 
 winWin::~winWin()
@@ -13,13 +15,12 @@ winWin::~winWin()
     delete ui;
 }
 
-void winWin::createWinWindow(){
+void winWin::createWinWindow(int point){
     // emit saveHistScoreSign();
     this->exec();
 }
 
-// void winWin::saveHistScoreSign(){
 
-// }
+
 
 

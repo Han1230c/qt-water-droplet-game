@@ -17,6 +17,9 @@ public:
 public slots:
     void createLoseWindow();
 
+private slots:
+    void on_leaveBtm_clicked();
+
 private:
     Ui::loseWin *ui;
 };
